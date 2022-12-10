@@ -1,0 +1,57 @@
+void setup () {
+pinMode (8 , OUTPUT ) ;
+pinMode (11 , OUTPUT ) ;
+pinMode (9 , OUTPUT ) ;
+pinMode (12 , OUTPUT );
+pinMode (10 , OUTPUT );
+pinMode (13 , OUTPUT );
+}
+void loop()
+{
+  foward(100);
+  delay(5000);
+  backward(100);
+  delay(5000);
+  turnleft(100);
+  delay(5000);
+  turnright(100);
+  delay(5000);
+}
+void left_speed ( int speed ) {
+  
+if( speed > 0) {
+digitalWrite(11,0);
+digitalWrite(8,1);
+analogWrite(9, speed);
+} 
+  else {speed = 0 - speed;
+digitalWrite(11,1);
+digitalWrite(8,0);
+analogWrite(9, speed);
+ }
+}
+void right_speed ( int speed ) {
+  
+if( speed > 0) {
+digitalWrite(12,0);
+digitalWrite(13,1);
+analogWrite(10, speed);
+} 
+  else {speed = 0 - speed;
+digitalWrite(12,1);
+digitalWrite(13,0);
+analogWrite(10, speed);
+ }
+}
+void foward(int speed){
+ left_speed (speed);
+  right_speed (speed);}
+void backward(int speed){
+  left_speed (0-speed);
+  right_speed (0-speed);}
+void turnleft(int speed){
+  left_speed (speed);
+  right_speed (0-speed);}
+void turnright(int speed){
+  left_speed (0-speed);
+  right_speed (speed);}
